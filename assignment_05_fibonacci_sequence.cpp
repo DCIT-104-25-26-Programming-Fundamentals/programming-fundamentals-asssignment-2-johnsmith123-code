@@ -1,3 +1,4 @@
+//emented in its own function (see scaffold below).
 // =============================================================================
 // PROGRAMMING FUNDAMENTALS — Assignment 5
 // =============================================================================
@@ -40,8 +41,7 @@
 // -----------------------------------------------------------------------------
 // - Use a loop (not recursion) to generate the sequence in both parts.
 // - N must be a positive integer. If it is not, print an error message.
-// - Each part must be implemented in its own function (see scaffold below).
-//
+// - Each part must be impl
 
 //
 // =============================================================================
@@ -51,3 +51,100 @@
 #include <iostream>
 using namespace std;
 
+#include <iostream>
+using namespace std;
+
+
+// PART A: Print first N Fibonacci terms
+void printFibonacci(int n)
+{
+    int first = 0;
+    int second = 1;
+
+    cout << "Fibonacci sequence: ";
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << first << " ";
+
+        int next = first + second;
+
+        first = second;
+        second = next;
+    }
+
+    cout << endl;
+}
+
+
+// PART B: Check if a number is Fibonacci
+bool isFibonacci(int number)
+{
+    if (number < 0)
+    {
+        return false;
+    }
+
+    int first = 0;
+    int second = 1;
+
+
+    while (first <= number)
+    {
+        if (first == number)
+        {
+            return true;
+        }
+
+        int next = first + second;
+
+        first = second;
+        second = next;
+    }
+
+    return false;
+}
+
+
+
+int main()
+{
+    int n;
+
+
+    // PART A
+    cout << "How many terms? ";
+    cin >> n;
+
+
+    if (n <= 0)
+    {
+        cout << "Error: Number of terms must be positive." << endl;
+    }
+    else
+    {
+        printFibonacci(n);
+    }
+
+
+
+    // PART B
+
+    int number;
+
+    cout << "\nEnter a number to check: ";
+    cin >> number;
+
+
+    if (isFibonacci(number))
+    {
+        cout << number << " is a Fibonacci number." << endl;
+    }
+    else
+    {
+        cout << number << " is NOT a Fibonacci number." << endl;
+    }
+
+
+    return 0;
+}
